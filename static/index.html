@@ -5,7 +5,7 @@
         <meta name="description" content="palettes are magic <3">
         <meta name="keywords" content="color, colour, rgb, hex, value, schemes, themes">
         <meta name="author" content="Jana Marie Hemsing">
-        <link rel="icon" type="image/png" href="/favicon.png" sizes="96x96">
+        <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABG0lEQVR4Xu2bzQ7BQBSFz4RqE6s+gYhEFzZexFt4DQ+KhrKyYFVEBcOSe+0sfbO8nUzSk3Zm7vkJmk2j7AjHhdrl0JZzHdRrrd304i4N/CoanaX89cyO8a6lJIaPcrylaqqJm1uHrqqs7+rbtKNVlrp6GWrtQ+PXuWz0iFf/ql8B0GmuZFkAgEGAL4BfgD2ATZBTgGOQewAXIYsAN0GuwvQCNEN0g7TDvu+HD4AQgRGCEoMThBSFFYYWRxcwCCCMoAwhjaENIo6iDiOP4w94RwCDBA4RLDJ4hDBJ4RLDJodP0CKAURKnKFZZvMKYpXGLY5cnL2ARIDBBYoTIDJkhQlOkxojNkRu0CBCcJDlKdJbsMOHpn9PjfxSffwLtCrQqsunDIQAAAABJRU5ErkJggg==" sizes="96x96">
         <link rel="stylesheet" href="style.css">
         <title>my-little-color-collection</title>
     </head>
@@ -24,23 +24,23 @@
                 </div>
             </div>
             <hr class="delim">
-            {% for scheme in schemes %}
+            {% for scheme in schemes -%}
                 <h2 id="{{ scheme.name }}">{{ scheme.name }} <a class="link-here" href="#{{ scheme.name }}">Link here</a></h2>
                 <div class="row color-row"  style="height: 60rem;">
                     <div class="col">
                         <svg xmlns="http://www.w3.org/2000/svg" class="color-box" viewBox="0 0 100 100" width="100%" height="100%" preserveAspectRatio="none">
-                            {% for color in scheme.color|reverse %}
+                            {% for color in scheme.color|reverse -%}
                                 {{ color|svgpathgen(loop.index0, loop.length) }}
                             {% endfor %}
                         </svg>
                     </div>
                 </div>
                 <div class="row annotation-row">
-                    {% for color in scheme.color %}
+                    {% for color in scheme.color -%}
                         {{ color|annotationgen(loop.index0, loop.length) }}
                     {% endfor %}
                 </div>
-                {% if not loop.last %}
+                {% if not loop.last -%}
                     <hr class="delim">
                 {% endif %}
             {% endfor %}

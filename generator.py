@@ -46,6 +46,15 @@ schemes = [
 	{	"name": "plumbee", 
 		"color": ["#0a0b0c", "#912d57", "#f6d91c", "#d5b2d5"],
 	},
+	{	"name": "landingpage", 
+		"color": ["#030303", "#960200", "#f8f7f9"],
+	},
+	{	"name": "dispossessed", 
+		"color": ["#2f333a", "#3c6f71", "#d9d9d9", "#eb6f92"],
+	},
+	{	"name": "shark", 
+		"color": ["#1b1a22", "#3a5769", "#457f8d", "#dcdcdc", "#f0c1b7"],
+	},
 ]
 
 def svgpathgen(s, idx, sumcolors):
@@ -60,7 +69,6 @@ def generate_folder_structure():
 
 def copy_statics():
 	shutil.copy2('static/style.css', 'www')
-	shutil.copy2('static/favicon.png', 'www')
 
 def generate_and_copy_index():
 	env = Environment(loader=FileSystemLoader('static/'))
