@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="my-little-color-collection">
+        <meta name="keywords" content="color, colour, rgb, hex, value, schemes, themes">
+        <meta name="author" content="Jana Marie Hemsing">
+        <link rel="icon" type="image/png" href="/favicon.png" sizes="96x96">
+        <link rel="stylesheet" href="style.css">
+        <title>my-little-color-collection</title>
+    </head>
+    <nav class="header">
+        <section class="container">
+            <div style="margin-bottom: -8rem;">
+                <span id="title">my-little-color-collection</span>
+            </div>
+        </section>
+    </nav>
+    <body>
+        <section class="container">
+            <div class="row" style="height: 8rem;">
+                <div class="col" style="margin-bottom: auto; margin-top: auto;">        
+                    <span class="descriptor">All color schemes are published under CC0.</span>
+                </div>
+            </div>
+            <hr class="delim">
+            {% for scheme in schemes %}
+                <h2 id="{{ scheme.name }}">{{ scheme.name }} <a class="link-here" href="#{{ scheme.name }}">Link here</a></h2>
+                <div class="row color-row"  style="height: 60rem;">
+                    <div class="col">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="color-box" viewBox="0 0 100 100" width="100%" height="100%" preserveAspectRatio="none">
+                            {% for color in scheme.color|reverse %}
+                                {{ color|svgpathgen(loop.index0, loop.length) }}
+                            {% endfor %}
+                        </svg>
+                    </div>
+                </div>
+                <div class="row annotation-row">
+                    {% for color in scheme.color %}
+                        {{ color|annotationgen(loop.index0, loop.length) }}
+                    {% endfor %}
+                </div>
+                {% if not loop.last %}
+                    <hr class="delim">
+                {% endif %}
+            {% endfor %}
+        </section>
+    </body>
+    <footer class="footer">
+        <section class="container" style="text-align: center;">
+            Designed with &hearts; and some cursed python scripts &#8212; <a href="https://github.com/Jana-Marie/my-little-color-collection">source</a>
+        </section>
+    </footer>
+</html>
