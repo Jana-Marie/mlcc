@@ -3,15 +3,15 @@ services:
     web:
         build: .
         ports:
-            - "5099:5099"
+            - "5123:5123"
         networks:
           - web
         volumes:
-            - .:/myapp
+            - ./www:/myapp
         restart: always
         labels:
           traefik.enable: true
-          traefik.port: 5099
+          traefik.port: 5123
           traefik.frontend.rule: "Host:mlcc.janamarie.dev"
           traefik.frontend.redirect.entryPoint: "https"
           traefik.docker.network: web
